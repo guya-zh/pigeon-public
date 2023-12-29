@@ -1,0 +1,4 @@
+cn.guyasc.pigeon.log.desensitization.rule.PhoneMatchRule
+cn.guyasc.pigeon.log.desensitization.rule.Phone86MatchRule
+cn.guyasc.pigeon.log.desensitization.rule.NameMatchRule
+cn.guyasc.pigeon.log.desensitization.rule.IdCardMatchRule

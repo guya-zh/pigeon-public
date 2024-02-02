@@ -27,6 +27,11 @@ public class PhoneMatchRule implements MatchRule {
     }
 
     @Override
+    public boolean isHide(String content) {
+        return true;
+    }
+
+    @Override
     public float sort() {
         return 10000F;
     }

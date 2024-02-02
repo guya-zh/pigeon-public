@@ -10,6 +10,8 @@
     <modules>
         <module>pigeon-log-desensitization</module>
         <module>pigeon-core</module>
+        <module>pigeon-mybatis-encryption</module>
+        <module>pigeon-data-encryption</module>
     </modules>
     <version>1.0.0</version>
     <properties>
@@ -24,7 +26,7 @@
         <logback.version>1.4.11</logback.version>
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.30</lombok.version>
-        <!---->
+        <jackson.version>2.13.5</jackson.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -52,6 +54,26 @@
                 <groupId>cn.guyasc.pigeon</groupId>
                 <artifactId>pigeon-core</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

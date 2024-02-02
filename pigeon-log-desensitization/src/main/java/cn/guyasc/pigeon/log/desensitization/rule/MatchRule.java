@@ -32,6 +32,11 @@ public interface MatchRule extends Comparable<MatchRule> {
     int end();
 
     /**
+     * 判断是否需要脱敏感
+     */
+    boolean isHide(String content);
+
+    /**
      * 顺序,越小执行优先级越高
      */
     float sort();

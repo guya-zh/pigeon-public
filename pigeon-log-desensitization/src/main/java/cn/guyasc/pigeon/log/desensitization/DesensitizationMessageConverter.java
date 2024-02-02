@@ -4,9 +4,10 @@ package cn.guyasc.pigeon.log.desensitization;
 import ch.qos.logback.classic.pattern.MessageConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import cn.guyasc.pigeon.core.util.AssertUtil;
+import cn.guyasc.pigeon.core.util.BeanLoadUtil;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ServiceLoader;
+import java.util.TreeSet;
 
 /**
  * 日志脱敏处理
@@ -19,8 +20,8 @@ public class DesensitizationMessageConverter extends MessageConverter {
     private DesensitizationHandler desensitizationHandler;
 
     public DesensitizationMessageConverter() {
-        ServiceLoader<DesensitizationHandler> load = ServiceLoader.load(DesensitizationHandler.class);
-        for (DesensitizationHandler desensitizationHandler : load) {
+        TreeSet<DesensitizationHandler> handlers = BeanLoadUtil.load(DesensitizationHandler.class);
+        for (DesensitizationHandler desensitizationHandler : handlers) {
             this.desensitizationHandler = desensitizationHandler;
             if (desensitizationHandler.isPrimary()) {
                 break;

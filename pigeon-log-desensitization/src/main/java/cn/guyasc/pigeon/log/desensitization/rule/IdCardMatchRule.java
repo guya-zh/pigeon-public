@@ -27,6 +27,11 @@ public class IdCardMatchRule implements MatchRule {
     }
 
     @Override
+    public boolean isHide(String content) {
+        return true;
+    }
+
+    @Override
     public float sort() {
         return 8000F;
     }

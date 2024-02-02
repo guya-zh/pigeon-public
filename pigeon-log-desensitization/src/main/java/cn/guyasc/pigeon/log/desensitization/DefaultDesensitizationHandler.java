@@ -1,11 +1,11 @@
 package cn.guyasc.pigeon.log.desensitization;
 
 import cn.guyasc.pigeon.core.util.AssertUtil;
+import cn.guyasc.pigeon.core.util.BeanLoadUtil;
 import cn.guyasc.pigeon.core.util.ObjectUtil;
 import cn.guyasc.pigeon.log.desensitization.rule.MatchRule;
 
 import java.util.HashSet;
-import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
@@ -21,12 +21,7 @@ public class DefaultDesensitizationHandler implements DesensitizationHandler {
     private final TreeSet<MatchRule> matchRuleSet;
 
     public DefaultDesensitizationHandler() {
-        ServiceLoader<MatchRule> load = ServiceLoader.load(MatchRule.class);
-        ServiceLoader.load(MatchRule.class);
-        matchRuleSet = new TreeSet<>();
-        for (MatchRule matchRule : load) {
-            matchRuleSet.add(matchRule);
-        }
+        matchRuleSet = BeanLoadUtil.load(MatchRule.class);
         AssertUtil.isTrue(!ObjectUtil.isEmpty(matchRuleSet), "匹配规则为空！");
     }
 
@@ -39,8 +34,10 @@ public class DefaultDesensitizationHandler implements DesensitizationHandler {
                 matcherSet.add(matcher.group());
             }
             for (String result : matcherSet) {
-                String hide = ObjectUtil.hide(result, matchRule.start(), matchRule.end());
-                content = content.replaceAll(result, hide);
+                if (matchRule.isHide(result)) {
+                    String hide = ObjectUtil.hide(result, matchRule.start(), matchRule.end());
+                    content = content.replaceAll(result, hide);
+                }
             }
         }
         return content;

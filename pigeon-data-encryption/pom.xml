@@ -8,9 +8,9 @@
         <artifactId>pigeon-parent</artifactId>
         <version>1.0.0</version>
     </parent>
-    <packaging>jar</packaging>
 
-    <artifactId>pigeon-core</artifactId>
+    <groupId>org.example</groupId>
+    <artifactId>pigeon-data-encryption</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -18,22 +18,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <!-- jackjson json序列表 -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
+            <groupId>cn.guyasc.pigeon</groupId>
+            <artifactId>pigeon-core</artifactId>
         </dependency>
     </dependencies>
 
